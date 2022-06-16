@@ -1,0 +1,9 @@
+# Test if correctly built the graph from noPath.csv
+
+loaded graph np
+
+np contains: n1 n2 n3
+
+the children of n1 in np are:
+the children of n2 in np are:
+the children of n3 in np are:

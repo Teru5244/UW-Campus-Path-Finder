@@ -1,0 +1,17 @@
+# Test if the searching algorithm is working properly.
+
+CreateGraph g
+
+AddNode g n1
+AddNode g n2
+AddNode g n3
+AddNode g n4
+
+AddEdge g n1 n2 1.0
+AddEdge g n2 n3 1.0
+AddEdge g n3 n4 1.0
+AddEdge g n1 n3 1.0
+
+FindPath g n1 n3
+
+FindPath g n1 n4

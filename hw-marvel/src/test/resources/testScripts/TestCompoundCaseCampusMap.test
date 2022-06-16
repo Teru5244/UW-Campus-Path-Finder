@@ -1,0 +1,26 @@
+# Build a compound graph based on campusMapUW.csv and test with compound cases of FindPath
+
+LoadGraph campus campusMapUW.csv
+
+ListNodes campus
+
+ListChildren campus Red_Square
+ListChildren campus HUB
+ListChildren campus CSE
+ListChildren campus MUS
+
+# Test find shortest path
+FindPath campus LAW HUB
+
+# Test find path alphabetically
+FindPath campus CSE Red_Square
+
+# Test no path found
+FindPath campus Red_Square IMA
+
+# Test illegal arguments
+FindPath campus CSE CSE2
+
+FindPath campus CSE2 ODE
+
+FindPath campus CSE2 CSE

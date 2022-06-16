@@ -1,0 +1,9 @@
+# Create a graph
+CreateGraph g
+
+# Add two nodes
+AddNode g n1
+AddNode g n2
+
+# Print the nodes in the graph
+ListNodes g

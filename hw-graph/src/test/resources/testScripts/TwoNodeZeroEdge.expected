@@ -1,0 +1,9 @@
+# Create a graph
+created graph g
+
+# Add two nodes
+added node n1 to g
+added node n2 to g
+
+# Print the nodes in the graph
+g contains: n1 n2

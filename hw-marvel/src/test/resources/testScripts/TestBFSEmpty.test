@@ -1,0 +1,9 @@
+# Test BFS on an empty graph
+
+LoadGraph empty empty.csv
+
+FindPath empty n1 n2
+
+FindPath empty you me
+
+FindPath empty Failure Success

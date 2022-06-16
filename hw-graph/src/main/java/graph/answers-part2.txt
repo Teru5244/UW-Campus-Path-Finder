@@ -1,0 +1,59 @@
+## CSE 331 hw-graph Part 2 Questions
+
+NOTE: This file is used as part of hw-graph-part2, and is not due as part of the hw-graph-part1
+submission. You may leave it blank for hw-graph-part1.
+
+## Part 1
+###########################################################################
+
+A few examples of possible Graph representations:
+
+    A: A collection of nodes and a collection of edges.
+    B: An adjacency list, in which each node is associated with a list of its outgoing edges.
+    C: An adjacency matrix, which explicitly represents, for every pair ⟨A,B⟩ of nodes, whether there 
+       is a link from A to B, and how many.
+
+1. In two or three sentences, explain an advantage and a disadvantage of each of the
+representations listed above (for example, in terms of runtime complexity, space
+complexity, or ease of implementation).
+
+A: Using collections are easier to implement. Other than that, add() and get() a new node or edge to
+the graph only takes about O(1) runtime. However, the runtime for removing a node will be O(n) runtime.
+B: Using an adjacency list will have nice runtime of O(1) when adding a node, however the runtime for
+getting a node (i.e. checking a node) will be O(n).
+C: Using an adjacency matrix is easy to think in abstract level, the runtime for add/remove and get is
+also really fast (O(1)). However, it takes up too many spaces (about O(n^2)). The implementation for
+an adjacency matrix is also harder than the other two.
+
+
+2. In two to three sentences, describe the representation you chose and explain why you
+chose it. If you chose to use a different representation than one of the three we described
+above, be sure to list its advantages and disadvantages, too.
+
+I used the collection representation but a little different. Specifically, I used a hash map to represent the graph with
+nodes as the key and a hash set of edges as the values that belongs to a key. I choose this representation because it is
+easy to implement, and it is really easy to think and visualize in abstract level. The runtime of the operations should
+be the same as the collection representation.
+
+
+## Part 4
+###########################################################################
+
+    (Please keep your answers brief and to-the-point.)
+
+1. Describe any new tests you added and why you added them, or why you feel that your original
+tests alone are sufficient.
+
+Since I edited (added nodeSize(), edgeSize(), getChildNode() and deleted getData(), size()) some functions in graph
+class, I added some tests about them. But the general testing strategy is still the same (dividing into cases like two
+nodes and two edges and write similar tests to check if the functions work for all the situations).
+
+
+2. Did you make any changes to your specifications as you were implementing your Graph? (yes/no)
+If yes, describe your changes and why you made them.
+
+I did make some changes. First, I deleted all the redundant @throws specification since sometimes I do not need to throw
+any exceptions (if I decide to use @spec.requires instead). Second, I add some extra information to some functions since
+I did not include that in part1. I also added a @spec.effects at every constructor since they will actually affect
+"this".
+

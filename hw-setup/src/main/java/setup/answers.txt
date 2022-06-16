@@ -1,0 +1,25 @@
+## CSE 331 hw-setup Questions
+## Part 6
+
+1. Why did Fibonacci fail the testThrowsIllegalArgumentException< test? What (if anything) did
+you have to do to fix it? If you did not have to change anything to fix this issue, explain why.
+
+In Fobonacci class, the code accidentally made 0 also included as the negative case and cause the test program report
+wrong exceptions threw by the class function. After changed the
+if (n <= 0) { throw new IllegalArgumentException(n + " is negative"); } code to
+if (n < 0) { throw new IllegalArgumentException(n + " is negative"); } the problem is fixed.
+
+2. Why did Fibonacci fail the testBaseCase test? What (if anything) did you have to do to fix
+it? If you did not have to change anything to fix this issue, explain why.
+
+This is similar to the previous question, 0 is non-negative but the code accidentally made it negative. The expected
+value of Fib(0) is 1 but here we got a negative exception. Since we already change the condition n <= 0 to n < 0 in the
+previous question, we do not need to do anything more for here.
+
+3.Why did Fibonacci fail the testInductiveCase test? What (if anything) did you have to do to
+fix it? If you did not have to change anything to fix this issue, explain why.
+
+For the inductive cases, the algorithm completely messed up the fibonacci algorithm. In the case we n >= 2, we need to
+do the recursions for n - 1 and n - 2 and sum them up instead of subtract them. To fix this we can just simply change
+return getFibTerm(n - 1) - getFibTerm(n - 2); in the else to return getFibTerm(n - 1) + getFibTerm(n - 2);, and change
+the second condition from n <= 2 to n < 2;

@@ -1,0 +1,12 @@
+# Create a graph
+CreateGraph g
+
+# Add one node
+AddNode g n
+
+# Add one edge
+AddEdge g n n e
+
+# Print the nodes in the graph and the outgoing edges from n
+ListNodes g
+ListChildren g n

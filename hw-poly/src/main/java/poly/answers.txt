@@ -1,0 +1,100 @@
+## CSE 331 hw-poly Questions
+## Part 0
+###########################################################################
+
+1. Multiplication Pseudocode
+
+r = p * q
+    {inv: r = p_1*q_1 + p_1*q_2 + ... + p_1*q_(i-1) + ... + p_(i-1)*q(q-1), where p_i and q_i are ith term of p and q}
+    foreach term t_p in p:
+        foreach term t_q in q:
+            create a new term t to be the multiplication of t_p and t_q
+            add t to r using the addition method provided from the question example (r.add(t))
+
+2. Division Pseudocode
+
+q = u / v
+    {inv: v * q + u = u_pre}
+    while the largest degree of u is greater or equal to that of v
+        create a new term t to be the biggest-degree term of u divided by the biggest-degree term of v
+        add this new term t to polynomial q
+        let u decrease by t times v
+
+3. Division Example: (x3+x-1) / (x+1) = x2-x+2
+
+u = x^3+x-1
+v = x+1
+while the largest degree of u >= that of v
+    iteration 1: u = x^3+x-1, v = x+1, q = 0
+        [add t = x^3 / x = x^2 to q]
+        [replace u as x^3+x-1 - (x+1)*x^2 = -x^2+x-1
+    iteration 2: u = -x^2+x-1, v = x+1, q = x^2
+        [add t = -x^2 / x = -x to q]
+        [replace u as -x^2+x-1 - (x+1)*(-x) = 2x-1]
+    iteration 3: u = 2x-1, v = x+1, q = x^2-x
+        [add t = 2x / x = 2 to q]
+        [replace u as 2x-1 - (x+1)*2 = -3]
+We are done! q = [x^2-x+2], r = -3
+
+
+## Part 1
+###########################################################################
+
+1. Weakened Rep Invariant
+
+If the rep inv is weakened, the constructor RatNum(int n, int d) will not have the gcd part and simplification part,
+since our fraction does not need to be simplified. The checkRep() method will also change since we do not need to check
+if the fraction is simplified. We can also delete the gcd() method since we do not need to do gcd anymore.
+
+2. Alternate add, sub, mul, div
+
+The spec of RatNum says RatNum is an "immutable" rational number, where immutable means at the time one instance has
+been created, the information within can never been modified. If we modified the last statement as the question stated,
+we will always change the numer and denom each time when we call add, sub, mul, and div methods and that does not
+fulfill the spec requirements for RatNum class.
+
+3. Constructor checkReps
+
+Since the class is immutable, we can never change the information and values within the instances. Thus, calls to
+checkRep only at the end of the constructor is enough.
+
+
+## Part 2
+###########################################################################
+
+1. Calls to checkRep in RatTerm
+
+I called checkRep() only at the end of the constructor, because the RatTerm is immutable which is pretty similar to
+RatNum class. Thus, call checkRep() once at the end of the constructor is enough to keep the rep inv of the class.
+
+2. Weakened Rep Invariant
+
+If we weaken the rep inv, the constructor and checkRep() will need to be changes just like RatNum class. The constructor
+will no longer need to deal with the 0 coeff case. The checkRep() function will only need to check if coeff is null.
+
+3. Stronger Rep Invariant
+
+If we add a new rule to rep inv, we will need again change the constructor and checkRep(). The constructor must include
+another if statement to change the expt to 0 is the coeff is NaN, and the checkRep() needs to check the case when coeff
+is NaN but expt is not 0.
+
+
+## Part 3
+###########################################################################
+
+1. Calls to checkRep in RatPoly
+
+Even though RatPoly is immutable, the final variable terms can be edited by changing the RatTerms inside it, so I called
+checkRep to every function that will possibly edit the values in terms. I called checkRep at the end of constructor,
+add(), mul(), and div(), since addition, multiplication, and division will possibly change the coeff and expt in terms
+and that may violate the rep inv. The reason why I did not include a rep check in sub() is that my sub() implementation
+is basically calling add() which already has a rep check inside.
+
+2. Advantages and disadvantages
+
+I think one advantage is that we can keep the rep inv easier in this way with two separate list of coeff and expt. In
+this case we just need to check whether coeff list has 0 values and whether expt list has negative values. But the
+disadvantage is quite obvious, since we have to separately deal with two lists and that can sometimes cause more work to
+do. I prefer the one list of terms implementation since I feel it is a more natural way to deal with polynomial, and we
+can write class methods for terms which will help us to implement the polynomial class faster and more convenient.
+

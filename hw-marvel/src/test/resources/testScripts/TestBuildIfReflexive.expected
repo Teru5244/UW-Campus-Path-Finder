@@ -1,0 +1,9 @@
+# Test if the graph is built reflexively between nodes
+
+loaded graph ref
+
+ref contains: n1 n2 n3
+
+the children of n1 in ref are: n2(e1) n3(e3)
+the children of n2 in ref are: n1(e1) n3(e2)
+the children of n3 in ref are: n1(e3) n2(e2)

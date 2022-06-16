@@ -1,0 +1,12 @@
+# Create a graph
+created graph g
+
+# Add one node
+added node n to g
+
+# Add one edge
+added edge e from n to n in g
+
+# Print the nodes in the graph and the outgoing edges from n
+g contains: n
+the children of n in g are: n(e)

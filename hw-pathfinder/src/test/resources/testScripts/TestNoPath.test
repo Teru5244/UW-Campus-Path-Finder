@@ -1,0 +1,13 @@
+# Test if Dijkstra's Algorithm works on two
+# nodes that does not have an edge.
+
+CreateGraph noPath
+
+AddNode noPath A
+AddNode noPath B
+AddNode noPath C
+
+AddEdge noPath A B 130.0
+AddEdge noPath B A 130.0
+
+FindPath noPath A C

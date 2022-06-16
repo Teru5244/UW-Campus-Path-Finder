@@ -1,0 +1,104 @@
+## CSE 331 hw-graph Part 1 Questions
+
+## Part 1
+###########################################################################
+
+a. Write an AF and RI for IntQueue1 and IntQueue2.
+
+    ### IntQueue1
+
+    Abstraction Function:
+
+    The queue is the entries and the front of the queue is the front of the entries.
+    Entries is circular, which means that if size + front exceeds the length of the entries, we will go to the front of
+    the entries and let entries[n+i-k] be the element in queue.
+    enqueue and dequeue will only need to increase and decrease the front and size correspondingly.
+
+    Representation Invariant:
+
+    entries != null && elements in entries are not null
+
+
+    ### IntQueue2
+
+    Abstraction Function:
+
+    The queue is stored within entries with the front at index "front" and a size of "size"
+
+    Representation Invariant:
+
+    entries != null && elements in entries are not null && size >= 0 && front >= 0 && front <= entries.length - 1
+
+
+b. Group the snapshots of IntQueue2's internal state into groups that have the same abstract state.
+
+a: [1, 2]
+b: [2, 3, 4]
+c: [1, 2, 3]
+d: [1, 2]
+e: [1, 2, 3, 4]
+f: [1, 2, 3]
+g: [1, 2]
+h: [2, 3, 4]
+
+so a and d and g, b and h, c and f, are equivalent.
+
+
+c. For each signature below, state and justify in 1-2 sentences (per part) whether the method or constructor
+could possibly expose the representation, given the information available. Explain any assumptions you made.
+
+    1. `public int solveEquations(int x, int y, int z)`
+
+    Given this function only it is impossible to have rep exposure, since we cannot see how it is going on within the
+    solveEquations function, we cannot change anything.
+
+    2. `public String[] decode(boolean slowly)`
+
+    The array of strings can be editable. Assuming that this String[] is one of the fields of the class, this function
+    can have possibility of rep exposure.
+
+    3. `private Date myBirthday()`
+
+    Date is mutable, assuming this Date object is one of the fields, this function can have possibility of rep exposure.
+
+    4. `public String toString()`
+
+    String is immutable, so it is impossible to have rep exposure in this function.
+
+    5. `public Iterator<Integer> elements()`
+
+    Iterators can be referenced to some mutable objects, thus the function can be possible to have rep exposure.
+
+    6. `public Deck(List<Card> cards)`
+
+    For the constructor, Assuming the constructor just directly assign the list to the field, there is possibility that
+    rep exposure can happen if we don't make copies of the values of the list of the Cards.
+
+
+## Part 2
+###########################################################################
+
+Briefly explain why you included the operations you did and why you feel they are a sufficient
+interface to a graph. If your design includes multiple classes or interfaces, explain why you
+included each one; if not, explain whether you considered additional classes and why you decided
+not to include them.
+
+I think the basic operation like add/remove edges and nodes are enough for a graph since a graph is consisted with
+multiple nodes and corresponding edges. Get data, edges, and nodes methods are required as well to check the information
+of a graph.
+I decided to separate the Edge and Node classes from the graph classes in order to better implement the methods in graph
+and have a better abstract view of nodes and edges. The built-in functions in Node and Edge classes are also helpful to
+build the graph method.
+
+## Part 3
+###########################################################################
+
+What was your testing strategy for this assignment? How do your script tests and JUnit tests
+differ from each other (if they do), and why?
+
+I followed the testing strategy from the hint section in the spec and tested the graph ADT using the "0, 1, 2" method to
+test various case including the empty cases. My script test files are only testing about different cases of the
+applications of the graph design but my JUnit tests mainly focusing on testing the different public classes and whether
+their functions work and fulfills the spec. Basically two different tests are focusing on the different parts of the
+ADT design and tend to make the design runnable and adaptive to many generic and special cases.
+

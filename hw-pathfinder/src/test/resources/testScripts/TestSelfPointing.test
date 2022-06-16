@@ -1,0 +1,7 @@
+# Test the searching algorithm on a self-pointing node
+
+CreateGraph selfPointing
+
+AddNode selfPointing A
+
+FindPath selfPointing A A

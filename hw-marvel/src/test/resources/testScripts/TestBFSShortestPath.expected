@@ -1,0 +1,12 @@
+# Test if the BFS is finding the shortest path between two nodes
+
+loaded graph simple
+
+path from n1 to n3:
+n1 to n3 via e3
+
+path from n2 to n3:
+n2 to n3 via e2
+
+path from n1 to n2:
+n1 to n2 via e1

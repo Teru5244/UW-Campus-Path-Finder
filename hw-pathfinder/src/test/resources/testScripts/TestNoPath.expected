@@ -1,0 +1,14 @@
+# Test if Dijkstra's Algorithm works on two
+# nodes that does not have an edge.
+
+created graph noPath
+
+added node A to noPath
+added node B to noPath
+added node C to noPath
+
+added edge 130.000 from A to B in noPath
+added edge 130.000 from B to A in noPath
+
+path from A to C:
+no path found

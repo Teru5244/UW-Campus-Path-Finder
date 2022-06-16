@@ -1,0 +1,32 @@
+# Build a compound graph based on campusMapUW.csv and test with compound cases of FindPath
+
+loaded graph campus
+
+campus contains: CSE HUB IMA LAW MUS Red_Square
+
+the children of Red_Square in campus are: HUB(Grant_Lane) LAW(Memorial_Way) MUS(The_Quad)
+the children of HUB in campus are: CSE(Stevens_Way) MUS(Stevens_Way) Red_Square(Grant_Lane)
+the children of CSE in campus are: HUB(Stevens_Way) MUS(Stevens_Way)
+the children of MUS in campus are: CSE(Stevens_Way) HUB(Stevens_Way) Red_Square(The_Quad)
+
+# Test find shortest path
+path from LAW to HUB:
+LAW to Red_Square via Memorial_Way
+Red_Square to HUB via Grant_Lane
+
+# Test find path alphabetically
+path from CSE to Red_Square:
+CSE to HUB via Stevens_Way
+HUB to Red_Square via Grant_Lane
+
+# Test no path found
+path from Red_Square to IMA:
+no path found
+
+# Test illegal arguments
+unknown: CSE2
+
+unknown: CSE2
+unknown: ODE
+
+unknown: CSE2

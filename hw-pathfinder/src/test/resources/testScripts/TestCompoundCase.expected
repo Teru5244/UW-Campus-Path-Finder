@@ -1,0 +1,50 @@
+# Test if the algorithm works properly in compound-cases graph.
+
+created graph g
+
+added node CSE to g
+added node ODE to g
+added node HUB to g
+added node MUS to g
+added node MGH to g
+added node IMA to g
+
+added edge 2.000 from CSE to MGH in g
+added edge 2.000 from MGH to CSE in g
+added edge 2.000 from ODE to MGH in g
+added edge 2.000 from MGH to ODE in g
+added edge 3.500 from ODE to HUB in g
+added edge 3.500 from HUB to ODE in g
+added edge 2.000 from MGH to HUB in g
+added edge 2.000 from HUB to MGH in g
+added edge 2.000 from CSE to HUB in g
+added edge 2.000 from HUB to CSE in g
+added edge 3.000 from CSE to IMA in g
+added edge 3.000 from IMA to CSE in g
+added edge 4.000 from HUB to IMA in g
+added edge 4.000 from IMA to HUB in g
+
+# Test correctness
+path from ODE to IMA:
+ODE to MGH with weight 2.000
+MGH to CSE with weight 2.000
+CSE to IMA with weight 3.000
+total cost: 7.000
+
+path from ODE to HUB:
+ODE to HUB with weight 3.500
+total cost: 3.500
+
+path from CSE to ODE:
+CSE to MGH with weight 2.000
+MGH to ODE with weight 2.000
+total cost: 4.000
+
+# Test self pointing
+path from CSE to CSE:
+CSE to CSE with weight 0.000
+total cost: 0.000
+
+# Test no path
+path from CSE to MUS:
+no path found

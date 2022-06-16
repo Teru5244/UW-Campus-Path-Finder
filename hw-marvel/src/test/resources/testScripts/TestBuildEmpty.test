@@ -1,0 +1,7 @@
+# Build up the graph from empty file and check its properties
+
+LoadGraph empty empty.csv
+
+ListNodes empty
+
+FindPath empty a b

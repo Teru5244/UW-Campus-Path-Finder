@@ -1,0 +1,6 @@
+# Test if BFS works well between two nodes that have no path
+
+loaded graph np
+
+path from n1 to n2:
+no path found

@@ -1,0 +1,9 @@
+# Test the searching algorithm on a self-pointing node
+
+created graph selfPointing
+
+added node A to selfPointing
+
+path from A to A:
+A to A with weight 0.000
+total cost: 0.000

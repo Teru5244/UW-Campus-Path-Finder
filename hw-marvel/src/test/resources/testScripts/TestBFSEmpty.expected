@@ -1,0 +1,12 @@
+# Test BFS on an empty graph
+
+loaded graph empty
+
+unknown: n1
+unknown: n2
+
+unknown: you
+unknown: me
+
+unknown: Failure
+unknown: Success

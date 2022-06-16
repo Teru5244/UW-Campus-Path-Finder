@@ -1,0 +1,9 @@
+# Test if the graph is built reflexively between nodes
+
+LoadGraph ref simpleGraph.csv
+
+ListNodes ref
+
+ListChildren ref n1
+ListChildren ref n2
+ListChildren ref n3

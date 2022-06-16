@@ -1,0 +1,38 @@
+# Test if the algorithm works properly in compound-cases graph.
+
+CreateGraph g
+
+AddNode g CSE
+AddNode g ODE
+AddNode g HUB
+AddNode g MUS
+AddNode g MGH
+AddNode g IMA
+
+AddEdge g CSE MGH 2.0
+AddEdge g MGH CSE 2.0
+AddEdge g ODE MGH 2.0
+AddEdge g MGH ODE 2.0
+AddEdge g ODE HUB 3.5
+AddEdge g HUB ODE 3.5
+AddEdge g MGH HUB 2.0
+AddEdge g HUB MGH 2.0
+AddEdge g CSE HUB 2.0
+AddEdge g HUB CSE 2.0
+AddEdge g CSE IMA 3.0
+AddEdge g IMA CSE 3.0
+AddEdge g HUB IMA 4.0
+AddEdge g IMA HUB 4.0
+
+# Test correctness
+FindPath g ODE IMA
+
+FindPath g ODE HUB
+
+FindPath g CSE ODE
+
+# Test self pointing
+FindPath g CSE CSE
+
+# Test no path
+FindPath g CSE MUS

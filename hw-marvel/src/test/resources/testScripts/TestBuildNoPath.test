@@ -1,0 +1,9 @@
+# Test if correctly built the graph from noPath.csv
+
+LoadGraph np noPath.csv
+
+ListNodes np
+
+ListChildren np n1
+ListChildren np n2
+ListChildren np n3

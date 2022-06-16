@@ -1,0 +1,9 @@
+# Test if the BFS is finding the shortest path between two nodes
+
+LoadGraph simple simpleGraph.csv
+
+FindPath simple n1 n3
+
+FindPath simple n2 n3
+
+FindPath simple n1 n2

@@ -1,0 +1,5 @@
+# Test if BFS works well between two nodes that have no path
+
+LoadGraph np noPath.csv
+
+FindPath np n1 n2
